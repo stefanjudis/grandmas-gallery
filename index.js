@@ -18,7 +18,6 @@ const MEDIA_DIRECTORY = path.join(DIST_DIRECTORY, 'media');
 const enrichMessageWithMediaUrl = async message => {
   const { sid, body } = message;
 
-  console.log(message.numMedia);
   try {
     const media = await (await message.media()).list();
 
