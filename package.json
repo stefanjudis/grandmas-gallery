@@ -23,6 +23,7 @@
   "dependencies": {
     "dotenv": "^6.2.0",
     "download": "^7.1.0",
+    "netlify-lambda": "^1.4.2",
     "twilio": "^3.28.0"
   }
 }
