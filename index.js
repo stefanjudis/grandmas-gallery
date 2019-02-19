@@ -5,7 +5,7 @@ const fs = require('fs');
 const { promisify } = require('util');
 const writeFile = promisify(fs.writeFile);
 
-const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, MY_NUMBER } = process.env;
+const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, BOT_NUMBER } = process.env;
 const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const download = require('download');
@@ -47,7 +47,7 @@ const includesMedia = message => message.media && message.media.length;
   try {
     console.log('Fetching messages');
     let messages = await client.messages.list({
-      from: MY_NUMBER
+      to: BOT_NUMBER
     });
 
     console.log('Fetching media for messages');
