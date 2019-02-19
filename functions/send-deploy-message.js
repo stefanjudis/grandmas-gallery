@@ -21,7 +21,7 @@ exports.handler = function(event, context, callback) {
           client.messages.create({
             from: BOT_NUMBER,
             body:
-              'Site updated. 🎉 Go to grandmas-gallery.netlify.com to see it!',
+              'Site updated. 🎉\nGo to grandmas-gallery.netlify.com to see it!',
             to: number
           });
         })
