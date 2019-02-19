@@ -23,9 +23,10 @@ const enrichMessageWithMediaUrl = async message => {
     return {
       body,
       sid,
-      mediaUrls: media.map(
-        medium => `https://api.twilio.com${medium.uri.replace('.json', '')}`
-      )
+      media: media.map(({ sid, uri }) => ({
+        url: `https://api.twilio.com${uri.replace('.json', '')}`,
+        sid
+      }))
     };
   } catch (e) {
     return { body, sid };
@@ -34,11 +35,11 @@ const enrichMessageWithMediaUrl = async message => {
 
 const downloadMessageMedia = message => {
   return Promise.all(
-    message.mediaUrls.map(url => download(url, MEDIA_DIRECTORY))
+    message.media.map(({ sid, url }) => download(url, MEDIA_DIRECTORY))
   );
 };
 
-const includesMedia = message => message.mediaUrls && message.mediaUrls.length;
+const includesMedia = message => message.media && message.media.length;
 
 (async () => {
   try {
@@ -64,8 +65,8 @@ const includesMedia = message => message.mediaUrls && message.mediaUrls.length;
       `<ul>
         ${messages
           .map(message => {
-            return `<li>${message.mediaUrls.map(
-              url => `<img src="${url}">`
+            return `<li>${message.media.map(
+              ({ sid }) => `<img src="/media/${sid}.jpg">`
             )}</li>`;
           })
           .join('')}

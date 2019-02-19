@@ -61,4 +61,4 @@ typings/
 .env
 
 # fetched and generated data
-.media
+dist
