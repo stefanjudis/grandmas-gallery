@@ -79,6 +79,7 @@ const includesMedia = message => message.media && message.media.length;
 
         img {
           max-width: 100%;
+          display: block;
         }
       </style>
       <ul class="grid">
