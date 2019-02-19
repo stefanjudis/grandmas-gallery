@@ -12,7 +12,6 @@ const download = require('download');
 
 const isTruthy = value => !!value === true;
 
-const MY_NUMBER = 'whatsapp:+4917684299215';
 const DIST_DIRECTORY = path.join(__dirname, 'dist');
 const MEDIA_DIRECTORY = path.join(DIST_DIRECTORY, 'media');
 
