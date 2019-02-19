@@ -67,6 +67,7 @@ const includesMedia = message => message.media && message.media.length;
       `
       <style>
         .grid {
+          list-style: none;
           display: grid;
           grid-template-columns: repeat(auto-fit,minmax(18em,1fr));
         }
