@@ -13,7 +13,8 @@ const download = require('download');
 const isTruthy = value => !!value === true;
 
 const MY_NUMBER = 'whatsapp:+4917684299215';
-const MEDIA_DIRECTORY = path.join(__dirname, '.media');
+const DIST_DIRECTORY = path.join(__dirname, 'dist');
+const MEDIA_DIRECTORY = path.join(DIST_DIRECTORY, 'media');
 
 const enrichMessageWithMediaUrl = async message => {
   const { sid, body } = message;
@@ -60,7 +61,7 @@ const includesMedia = message => message.mediaUrls && message.mediaUrls.length;
 
     console.log('Write html file');
     await writeFile(
-      'index.html',
+      path.join(DIST_DIRECTORY, 'index.html'),
       `<ul>
         ${messages
           .map(message => {
