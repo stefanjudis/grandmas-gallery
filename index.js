@@ -65,6 +65,10 @@ const includesMedia = message => message.media && message.media.length;
       path.join(DIST_DIRECTORY, 'index.html'),
       `
       <style>
+        body {
+          margin: 0;
+          padding: 0;
+        }
         .grid {
           list-style: none;
           display: grid;
