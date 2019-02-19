@@ -62,3 +62,4 @@ typings/
 
 # fetched and generated data
 dist
+.functions
