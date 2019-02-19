@@ -20,7 +20,8 @@ exports.handler = function(event, context, callback) {
         numbers.map(number => {
           client.messages.create({
             from: BOT_NUMBER,
-            body: 'Site updated. 🎉',
+            body:
+              'Site updated. 🎉 Go to grandmas-gallery.netlify.com to see it!',
             to: number
           });
         })
