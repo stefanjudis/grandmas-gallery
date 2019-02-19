@@ -71,6 +71,8 @@ const includesMedia = message => message.media && message.media.length;
         }
         .grid {
           list-style: none;
+          margin: 0;
+          padding: 0;
           display: grid;
           grid-template-columns: repeat(auto-fit,minmax(18em,1fr));
         }
