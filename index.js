@@ -68,6 +68,7 @@ const includesMedia = message => message.media && message.media.length;
         body {
           margin: 0;
           padding: 0;
+          font-family: sans-serif;
         }
         .grid {
           list-style: none;
@@ -82,6 +83,7 @@ const includesMedia = message => message.media && message.media.length;
           display: block;
         }
       </style>
+      <h1>Hey Grandma 👋</h1>
       <ul class="grid">
         ${messages
           .map(message => {
