@@ -17,8 +17,10 @@ const MEDIA_DIRECTORY = path.join(DIST_DIRECTORY, 'media');
 
 const enrichMessageWithMediaUrl = async message => {
   const { sid, body } = message;
+
+  console.log(message.numMedia);
   try {
-    const media = await message.media().list();
+    const media = await (await message.media()).list();
 
     return {
       body,
@@ -62,7 +64,18 @@ const includesMedia = message => message.media && message.media.length;
     console.log('Write html file');
     await writeFile(
       path.join(DIST_DIRECTORY, 'index.html'),
-      `<ul>
+      `
+      <style>
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit,minmax(18em,1fr));
+        }
+
+        img {
+          max-width: 100%;
+        }
+      </style>
+      <ul class="grid">
         ${messages
           .map(message => {
             return `<li>${message.media.map(
