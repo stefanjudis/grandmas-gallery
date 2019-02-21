@@ -36,11 +36,12 @@ const enrichMessageWithMediaUrl = async message => {
 
 const downloadMessageMedia = message => {
   return Promise.all(
-    message.media.map(({ sid, url }) => download(url, MEDIA_DIRECTORY))
+    message.media.map(({ url }) => download(url, MEDIA_DIRECTORY))
   );
 };
 
 const includesMedia = message => message.media && message.media.length;
+const includesBody = message => !!message.body;
 
 (async () => {
   try {
@@ -55,7 +56,7 @@ const includesMedia = message => message.media && message.media.length;
     );
 
     console.log('Filter out messages without media');
-    messages = messages.filter(includesMedia);
+    messages = messages.filter(includesBody).filter(includesMedia);
 
     console.log('Download media');
     await Promise.all(messages.map(message => downloadMessageMedia(message)));
@@ -94,7 +95,7 @@ const includesMedia = message => message.media && message.media.length;
         ${messages
           .map(message => {
             return `<li>${message.media.map(
-              ({ sid }) => `<img src="/media/${sid}.jpg">`
+              ({ sid }) => `<img src="/media/${sid}.jpg"><p>${message.body}</p>`
             )}</li>`;
           })
           .join('')}
@@ -102,8 +103,8 @@ const includesMedia = message => message.media && message.media.length;
       <script>
         const form = document.querySelector('form');
         form.addEventListener('submit', async (event) => {
+          event.preventDefault();
           try {
-            event.preventDefault();
             await fetch('/', {
               method: 'post',
               headers: {
