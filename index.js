@@ -87,7 +87,7 @@ const includesBody = message => !!message.body;
       <h1>Hey Grandma 👋</h1>
       <form name="contact" method="POST" data-netlify="true">
         <p>
-          <button type="submit">Send</button>
+          <button type="submit">Send me images kids!</button>
         </p>
         <p class="successMsg" hidden>Grand children notified</p>
       </form>
