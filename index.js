@@ -86,11 +86,9 @@ const includesMedia = message => message.media && message.media.length;
       <h1>Hey Grandma 👋</h1>
       <form name="contact" method="POST" data-netlify="true">
         <p>
-          <label>Your Name: <input type="text" name="name" value="grandma"/></label>
-        </p>
-        <p>
           <button type="submit">Send</button>
         </p>
+        <p class="successMsg" hidden>Grand children notified</p>
       </form>
       <ul class="grid">
         ${messages
@@ -112,6 +110,7 @@ const includesMedia = message => message.media && message.media.length;
               body: new URLSearchParams(new FormData(this)).toString()
             });
 
+            document.querySelector('.successMsg').hidden = false;
             event.preventDefault();
           } catch(e) {
             console.error(e);
