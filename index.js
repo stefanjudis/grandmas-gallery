@@ -104,7 +104,7 @@ const includesMedia = message => message.media && message.media.length;
       <script>
         document.querySelector('form').addEventListener('submit', async (event) => {
           try {
-            await fetch(this.action, {
+            await fetch('/', {
               method: 'post',
               headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -112,7 +112,6 @@ const includesMedia = message => message.media && message.media.length;
               body: new URLSearchParams(new FormData(this)).toString()
             });
 
-            console.log('yeah');
             event.preventDefault();
           } catch(e) {
             console.error(e);
