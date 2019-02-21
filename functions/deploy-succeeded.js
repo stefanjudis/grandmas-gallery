@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, BOT_NUMBER } = process.env;
+const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, BOT_NUMBER, URL } = process.env;
 const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 exports.handler = function(event, context, callback) {
@@ -20,8 +20,7 @@ exports.handler = function(event, context, callback) {
         numbers.map(number => {
           client.messages.create({
             from: BOT_NUMBER,
-            body:
-              'Site updated. 🎉\nGo to grandmas-gallery.netlify.com to see it!',
+            body: `Site updated. 🎉\nGo to ${URL} to see it!`,
             to: number
           });
         })
