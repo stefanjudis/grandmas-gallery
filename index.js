@@ -84,6 +84,14 @@ const includesMedia = message => message.media && message.media.length;
         }
       </style>
       <h1>Hey Grandma 👋</h1>
+      <form name="contact" method="POST" data-netlify="true">
+        <p>
+          <label>Your Name: <input type="text" name="name" value="grandma"/></label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
       <ul class="grid">
         ${messages
           .map(message => {
@@ -93,14 +101,6 @@ const includesMedia = message => message.media && message.media.length;
           })
           .join('')}
       </ul>
-      <form name="contact" method="POST" data-netlify="true">
-        <p>
-          <label>Your Name: <input type="text" name="name" value="grandma'/></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
     `,
       'utf8'
     );
