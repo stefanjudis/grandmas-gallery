@@ -102,6 +102,7 @@ const includesMedia = message => message.media && message.media.length;
       <script>
         document.querySelector('form').addEventListener('submit', async (event) => {
           try {
+            event.preventDefault();
             await fetch('/', {
               method: 'post',
               headers: {
@@ -111,7 +112,6 @@ const includesMedia = message => message.media && message.media.length;
             });
 
             document.querySelector('.successMsg').hidden = false;
-            event.preventDefault();
           } catch(e) {
             console.error(e);
           }
