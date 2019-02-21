@@ -100,7 +100,8 @@ const includesMedia = message => message.media && message.media.length;
           .join('')}
       </ul>
       <script>
-        document.querySelector('form').addEventListener('submit', async (event) => {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (event) => {
           try {
             event.preventDefault();
             await fetch('/', {
@@ -108,7 +109,7 @@ const includesMedia = message => message.media && message.media.length;
               headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
               },
-              body: new URLSearchParams(new FormData(this)).toString()
+              body: new URLSearchParams(new FormData(form)).toString()
             });
 
             document.querySelector('.successMsg').hidden = false;
