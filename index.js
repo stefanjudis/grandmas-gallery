@@ -102,7 +102,7 @@ const includesMedia = message => message.media && message.media.length;
           .join('')}
       </ul>
       <script>
-        document.querySelector('form').addEventListener('submit', async () => {
+        document.querySelector('form').addEventListener('submit', async (event) => {
           try {
             await fetch(this.action, {
               method: 'post',
@@ -113,6 +113,7 @@ const includesMedia = message => message.media && message.media.length;
             });
 
             console.log('yeah');
+            event.preventDefault();
           } catch(e) {
             console.error(e);
           }
