@@ -101,6 +101,23 @@ const includesMedia = message => message.media && message.media.length;
           })
           .join('')}
       </ul>
+      <script>
+        document.querySelector('form').addEventListener('submit', async () => {
+          try {
+            await fetch(this.action, {
+              method: 'post',
+              headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+              },
+              body: new URLSearchParams(new FormData(this)).toString()
+            });
+
+            console.log('yeah');
+          } catch(e) {
+            console.error(e);
+          }
+        });
+      </script>
     `,
       'utf8'
     );
