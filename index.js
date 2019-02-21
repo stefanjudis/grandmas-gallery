@@ -5,7 +5,12 @@ const fs = require('fs');
 const { promisify } = require('util');
 const writeFile = promisify(fs.writeFile);
 
-const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, BOT_NUMBER } = process.env;
+const {
+  TWILIO_ACCOUNT_SID,
+  TWILIO_AUTH_TOKEN,
+  BOT_NUMBER,
+  GREETING
+} = process.env;
 const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const download = require('download');
@@ -84,7 +89,7 @@ const includesBody = message => !!message.body;
           display: block;
         }
       </style>
-      <h1>Hey Grandma 👋</h1>
+      <h1>${GREETING}</h1>
       <form name="contact" method="POST" data-netlify="true">
         <p>
           <button type="submit">Send me images kids!</button>
@@ -118,6 +123,8 @@ const includesBody = message => !!message.body;
             console.error(e);
           }
         });
+
+        setTimeout(() => window.location.reload(), 1000 * 60 * 30);
       </script>
     `,
       'utf8'
