@@ -6,9 +6,9 @@ You can set this project up in just a few minutes using Netlify's deploy button.
 
 ### Get configuration data from Twilio
 
-![Twilio Console with highlighted sid and auth token](./twilio-console.jpg)
+![Twilio Console with highlighted sid and auth token](./media/twilio-console.jpg)
 
-![Twilio Console with highlighted sid and auth token](./twilio-sandbox.jpg)
+![Twilio Console with highlighted sid and auth token](./media/twilio-sandbox.jpg)
 
 ### Deploy the site
 
