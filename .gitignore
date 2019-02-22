@@ -61,5 +61,6 @@ typings/
 .env
 
 # fetched and generated data
-dist
+dist/media
+dist/index.html
 .functions

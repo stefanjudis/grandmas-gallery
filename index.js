@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const { promisify } = require('util');
 const writeFile = promisify(fs.writeFile);
+const download = require('download');
 
 const {
   TWILIO_ACCOUNT_SID,
@@ -12,10 +13,6 @@ const {
   GREETING
 } = process.env;
 const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-
-const download = require('download');
-
-const isTruthy = value => !!value === true;
 
 const DIST_DIRECTORY = path.join(__dirname, 'dist');
 const MEDIA_DIRECTORY = path.join(DIST_DIRECTORY, 'media');
@@ -70,63 +67,48 @@ const includesBody = message => !!message.body;
     await writeFile(
       path.join(DIST_DIRECTORY, 'index.html'),
       `
-      <style>
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: sans-serif;
-        }
-        .grid {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: grid;
-          grid-template-columns: repeat(auto-fit,minmax(18em,1fr));
-        }
+      <!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Grandma's Gallery</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles.css">
+        <meta name="theme-color" content="#fafafa">
+      </head>
 
-        img {
-          max-width: 100%;
-          display: block;
-        }
-      </style>
-      <h1>${GREETING}</h1>
-      <form name="contact" method="POST" data-netlify="true">
-        <p>
-          <button type="submit">Send me images kids!</button>
-        </p>
+      <body>
+        <h1>${GREETING}</h1>
         <p class="successMsg" hidden>Grand children notified</p>
-      </form>
-      <ul class="grid">
-        ${messages
-          .map(message => {
-            return `<li>${message.media.map(
-              ({ sid }) => `<img src="/media/${sid}.jpg"><p>${message.body}</p>`
-            )}</li>`;
-          })
-          .join('')}
-      </ul>
-      <script>
-        const form = document.querySelector('form');
-        form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          try {
-            await fetch('/', {
-              method: 'post',
-              headers: {
-                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-              },
-              body: new URLSearchParams(new FormData(form)).toString()
-            });
+        <form name="contact" class="form" method="POST" data-netlify="true">
+          <button type="submit">Send me images kids!</button>
+        </form>
 
-            document.querySelector('.successMsg').hidden = false;
-          } catch(e) {
-            console.error(e);
-          }
-        });
-
-        setTimeout(() => window.location.reload(), 1000 * 60 * 30);
-      </script>
-    `,
+        <div class="viewport">
+          <div class="carousel-frame">
+            <div class="carousel">
+              <ul class="scroll">
+              ${messages
+                .map(message => {
+                  return `<li class="scroll-item-outer">
+                    <div class="scroll-item">
+                      <figure>
+                      ${message.media.map(
+                        ({ sid }) => `<img src="/media/${sid}.jpg">`
+                      )}
+                      <figcaption>${message.body}</figcaption>
+                      </figure>
+                    </div>
+                  </li>`;
+                })
+                .join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <script src="/gallery.js"></script>
+      </body>
+      </html>`,
       'utf8'
     );
   } catch (e) {
