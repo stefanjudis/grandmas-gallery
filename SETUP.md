@@ -12,12 +12,30 @@ You can set this project up in just a few minutes using Netlify's deploy button.
 
 ### Deploy the site
 
+Will ask for github permissions.
+
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/stefanjudis/grandmas-gallery)
 
 (👆 yes - press it!)
 
-### Define the webhook
+![Twilio Console with highlighted sid and auth token](./media/netlify-dialog.jpg)
 
-### Copy over Twilio serverless function
+### Define the webhook to trigger rebuilds
 
-### Register with the Sandbox
+Overview > Site Settings > Build & Deploy > Continuous Deployment > Build hooks
+
+![Netlify build hook](./media/netlify-build-hook.jpg)
+
+### Create serverless function and trigger netlify build
+
+![Netlify build hook](./media/twilio-function-create.jpg)
+
+Copy the code from [here](...) and paste it to the new function.
+
+![Netlify build hook](./media/twilio-function-edit.jpg)
+
+![Netlify build hook](./media/twilio-function-enable-cred.jpg)
+
+### And that's it!
+
+As your running now with a sandbox you have to register it!
