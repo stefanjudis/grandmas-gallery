@@ -1,7 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+
+  --carousel-width: 70vw;
+  --carousel-height: calc(0.7 * var(--carousel-width));
+  --carousel-padding: 5px;
+}
+
+@media (max-width: 600px) {
+  body {
+    --carousel-width: 95vw;
+  }
 }
 
 img {
@@ -13,26 +29,6 @@ h1 {
   text-align: center;
 }
 
-.grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
-}
-
-:root {
-  --carousel-width: 60vw;
-  --carousel-height: calc(0.7 * var(--carousel-width));
-  --carousel-padding: 5px;
-}
-
-@media (max-width: 600px) {
-  :root {
-    --carousel-width: 95vw;
-  }
-}
-
 .viewport {
   width: 100%;
   margin: 0 auto;
@@ -42,7 +38,6 @@ h1 {
 }
 
 .carousel-frame {
-  padding: 1em;
   width: calc(var(--carousel-width) + (2 * var(--carousel-padding)));
   height: calc(var(--carousel-height) + (2 * var(--carousel-padding)));
 }
@@ -50,6 +45,7 @@ h1 {
 .carousel {
   width: var(--carousel-width);
   height: var(--carousel-height);
+  margin: 0 auto;
 }
 
 .scroll {
