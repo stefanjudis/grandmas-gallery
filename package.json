@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build:site": "node index.js",
-    "build:fns": "netlify-lambda build functions",
+    "build:fns": "netlify-lambda build netlify/functions",
     "build": "npm run build:site && npm run build:fns",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:twilio:fn": "twilio-run twilio --ngrok"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,8 @@
     "download": "^7.1.0",
     "netlify-lambda": "^1.4.2",
     "twilio": "^3.28.0"
+  },
+  "devDependencies": {
+    "twilio-run": "^1.0.0-beta.4"
   }
 }
