@@ -21,7 +21,7 @@ const enrichMessageWithMediaUrl = async message => {
   const { sid, body } = message;
 
   try {
-    const media = await (await message.media()).list();
+    const media = await message.media().list();
 
     return {
       body,
