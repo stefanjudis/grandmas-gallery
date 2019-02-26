@@ -116,3 +116,17 @@ figure figcaption {
   padding: 0.5em;
   font-size: 1em;
 }
+
+.successMsg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #b9ffb6;
+  margin: 0;
+  padding: 1.5em;
+  text-align: center;
+  color: #08631d;
+  border-bottom: 2px solid #08631d;
+  font-weight: 800;
+}
