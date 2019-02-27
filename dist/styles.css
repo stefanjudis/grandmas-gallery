@@ -27,6 +27,10 @@ img {
 
 h1 {
   text-align: center;
+  padding: 0.5em;
+  margin: 0 0 0.5em;
+  box-shadow: 0.25em 0.25em 0.25em #eee;
+  color: #444;
 }
 
 .viewport {
@@ -106,15 +110,18 @@ figure figcaption {
 
 .form {
   position: fixed;
-  bottom: 1em;
-  right: 1em;
+  left: 50%;
+  bottom: 0em;
+  transform: translate(-50%, -50%);
 }
 
 .form button {
   background: #333;
   color: #fff;
-  padding: 0.5em;
+  padding: 0.75em;
   font-size: 1em;
+  border-radius: 0.25em;
+  border: none;
 }
 
 .successMsg {
