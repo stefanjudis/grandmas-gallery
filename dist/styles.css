@@ -10,7 +10,7 @@ body {
   font-family: sans-serif;
 
   --carousel-width: 70vw;
-  --carousel-height: calc(0.7 * var(--carousel-width));
+  --carousel-height: 80vh;
   --carousel-padding: 5px;
 }
 
