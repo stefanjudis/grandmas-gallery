@@ -94,10 +94,10 @@ figure {
 figure figcaption {
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
   right: 0;
-  padding: 1em 1em 2.5em;
-  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5em 1em;
+  background: rgba(255, 255, 255, 0.9);
   text-align: center;
 }
 
@@ -110,6 +110,7 @@ figure figcaption {
 
 .form {
   position: fixed;
+  z-index: 5;
   left: 50%;
   bottom: 0em;
   transform: translate(-50%, -50%);
